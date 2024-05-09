@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">CE Shoe Wear</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Products</a>
+          </li>
+  
+          <li>
+              <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button type="button">
+              </form>
+          </li>
+        </ul>
+        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#addProduct">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+          Add Product
+        </button>
+  
+        <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add a Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <input class="form-control" id="exampleFormControlInput1" placeholder="Product Name">
+                </div> 
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Descriptions</span>
+                  <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  <span class="input-group-text">.00</span>
+                </div>
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">Product Image</label>
+                  <input class="form-control" type="file" id="productImage">
+                </div>
+  
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" onclick="postProduct()">Save changes</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+  
+        <button type="button" class="btn btn-primary m-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
+          </svg>
+          Cart
+        </button>
+  
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="btnProfile" data-bs-toggle="dropdown" aria-expanded="false">
+            Profile Settings
+          </button>
+          <ul class="dropdown-menu" id="btnProfileDropdownMenu" aria-labelledby="btnProfile">
+            <li>
+              <a type="button" class="btn border-primary m-1" onclick="showUserInfo()" 
+              data-bs-toggle="modal" data-bs-target="#modalShowUserInfo">User Info</a>
+            </li>
+            <li>
+              <a type="button" class="btn btn-primary m-1" onclick="logout()">Logout</a>
+            </li>
+            <li>
+              <a type="button" class="btn btn-danger m-1" onclick="deleteAccount()">Delete Account</a>
+            </li>
+          </ul>
+        </div>
+  
+      </div>
+    </div>
+</nav>
+
+
+  
+  <div class="modal fade" id="modalShowUserInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <div id="userInfo">
+                <p>Username: <span id="displayUsername"></span></p>
+                <p>Email: <span id="displayEmail"></span></p>
+                <p>Address: <span id="displayAddress"></span></p>
+                <p>Password: ********</p>
+              </div>
+  
+                <button type="button" class="btn btn-primary" id="editBtn" onclick="editUserInfo()">Edit</button>
+                <div id="editUserInfoForm">
+                    <label for="editUsername">New Username:</label>
+                    <input type="text" id="editUsername">
+                    <label for="editEmail">New Email:</label>
+                    <input type="email" id="editEmail">
+                    
+                    <label for="editAddress">New Address:</label>
+                    <input type="email" id="editAddress">
+                    
+                    <label for="editPassword">New Password:</label>
+                    <input type="password" id="editPassword">
+                    <button type="button" class="btn btn-success" onclick="saveUserInfo()">Save Changes</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelEditBtn()">Cancel</button>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+<div class="card">
+  <div class="card-body">
+    <a type="button" class="btn btn-info" href="products.html">Products</a>
+    <a type="button" class="btn btn-info" href="cart.html">Cart</a>
+    <a type="button" class="btn btn-info" href="sales.html">Sales</a>
+  </div>
+</div>
+  
+  
+  
+  <script src="homePage.js"></script>
+  
+
+</body>
+</html>

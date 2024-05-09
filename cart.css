@@ -1,0 +1,29 @@
+
+
+#add{
+    display: block;
+    width: 300px; /* Set the width of your card */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff; /* optional background color for the card */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* optional box shadow */
+}
+
+#cartList {
+    width: 400px;
+    margin-right: auto;
+    margin-left: 1vh;
+    float: left;
+}
+
+#productList {
+    width: 400px;
+    margin-left: auto;
+    margin-right: 1vh;
+}
+
+#exitBtn{
+    margin: 10px 90%;
+}
